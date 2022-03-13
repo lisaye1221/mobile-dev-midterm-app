@@ -1,12 +1,46 @@
-import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View } from 'react-native';
+import { NavigationContainer } from '@react-navigation/native';
+import { Provider as PaperProvider } from 'react-native-paper';
+import { createMaterialBottomTabNavigator } from '@react-navigation/material-bottom-tabs';
+import Ionicons from 'react-native-vector-icons/Ionicons';
+
+const Tab = createMaterialBottomTabNavigator();
 
 export default function App() {
   return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
+    <PaperProvider>
+      <NavigationContainer style = {styles.container}>
+      <Tab.Navigator
+        initialRouteName="Home"
+        activeColor="#ffffff"
+        inactiveColor="#2189D3"
+        barStyle={{ backgroundColor: '#90D1FF' }}
+        screenOptions={({ route }) => ({
+          tabBarIcon: ({ focused }) => {
+            let iconName;
+            let size;
+            if (route.name === 'Home') {
+              iconName = 'home';
+              size = 50;
+            } 
+            else if (route.name === 'Add'){
+              iconName = 'add-circle';
+              size = 90;
+            }
+            else if (route.name === 'Friends'){
+              iconName = 'contacts';
+              size = 50;
+            }
+            return <Ionicons name={iconName} size={size} color={focused? "#ffffff":"#2189D3"} />;
+          },
+        })}
+      >
+          <Tab.Screen name="Home" component={HomeScreen}  options={{ header: () => null,}}/>
+          <Tab.Screen name="Add" component={HomeScreen}  options={{ header: () => null,}}/>
+          <Tab.Screen name="Friends" component={HomeScreen}  options={{ header: () => null,}}/>
+        </Tab.Navigator>
+      </NavigationContainer>
+    </PaperProvider>
   );
 }
 
