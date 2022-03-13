@@ -3,6 +3,9 @@ import { NavigationContainer } from '@react-navigation/native';
 import { Provider as PaperProvider } from 'react-native-paper';
 import { createMaterialBottomTabNavigator } from '@react-navigation/material-bottom-tabs';
 import Ionicons from 'react-native-vector-icons/Ionicons';
+import HomeScreenNav from './screens/HomeScreen';
+import FriendsScreenNav from './screen_nav/FriendsScreenNav';
+import AddBillScreen from './screens/AddBillScreen';
 
 const Tab = createMaterialBottomTabNavigator();
 
@@ -35,9 +38,9 @@ export default function App() {
           },
         })}
       >
-          <Tab.Screen name="Home" component={HomeScreen}  options={{ header: () => null,}}/>
-          <Tab.Screen name="Add" component={HomeScreen}  options={{ header: () => null,}}/>
-          <Tab.Screen name="Friends" component={HomeScreen}  options={{ header: () => null,}}/>
+          <Tab.Screen name="Home" component={HomeScreenNav}  options={{ header: () => null,}}/>
+          <Tab.Screen name="Add" component={AddBillScreen}  options={{ header: () => null,}}/>
+          <Tab.Screen name="Friends" component={FriendsScreenNav}  options={{ header: () => null,}}/>
         </Tab.Navigator>
       </NavigationContainer>
     </PaperProvider>

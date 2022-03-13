@@ -6,7 +6,7 @@ import BillSummary from '../components/BillSummary';
 export default function HomeScreenNav() {
     return (
       <SafeAreaView>
-        <Text>Home Screen</Text>
+        <Text>This is the home screen</Text>
         <BillSummary/>
       </SafeAreaView>
     );
